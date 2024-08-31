@@ -1,3 +1,4 @@
+import { OS } from "@/constants/device";
 import { colors, fontSize } from "@/constants/tokens";
 import { FontAwesome, FontAwesome6, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { BlurView } from "expo-blur";
@@ -17,18 +18,20 @@ const TabsNavigation = () => {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20,
                 borderTopWidth: 0,
-                paddingTop: 8
+                paddingTop: 8,
             },
             headerShown: false,
             tabBarBackground: () => (
                 <BlurView
-                    intensity={95}
+                    intensity={OS === "android" ? 0 : 95}
                     style={{
                         ...StyleSheet.absoluteFillObject,
                         overflow: 'hidden',
-                        borderTopLeftRadius: 20,
-                        borderTopRightRadius: 20
+                        borderTopLeftRadius: OS === "android" ? 0 : 20,
+                        borderTopRightRadius: OS === "android" ? 0 : 20,
+                        backgroundColor: OS === "android" ? "#000000" : null
                     }}
+
                 />
             )
         }}
