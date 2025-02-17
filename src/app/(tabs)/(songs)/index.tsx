@@ -1,9 +1,9 @@
 import library from '@/assets/data/library.json';
 import { TrackList } from "@/components/TrackList";
 import { OS } from "@/constants/device";
-import { colors, screenPadding } from "@/constants/tokens";
-import { trackTitleFilter } from '@/helpers/filter';
-import { useNavigationSearch } from '@/hooks/useNavigationSearch';
+import { screenPadding } from "@/constants/tokens";
+import { trackTitleFilter } from "@/helpers/filter";
+import { useNavigationSearch } from "@/hooks/useNavigationSearch";
 import { defaultStyles } from "@/styles";
 import { useMemo } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
@@ -11,19 +11,17 @@ import { ScrollView, StyleSheet, View } from "react-native";
 const SongsScreen = () => {
 
     const search = useNavigationSearch({
-        searchBarOptions: {
-            headerIconColor: colors.textMuted,
-            textColor: colors.text,
-            tintColor: colors.text,
-            hintTextColor: colors.textMuted,
+        searchBarOptions:{
+            placeholder: 'Find in songs',
         }
     })
 
-
-    const filteredTracks = useMemo(() => {
-        if (!search) return library
+    const filteredSongs = useMemo(()=>{
+        if(!search) return library
         return library.filter(trackTitleFilter(search))
-    }, [search])
+    },[search])
+
+
 
     return (
         <View style={defaultStyles.container}>
@@ -32,7 +30,7 @@ const SongsScreen = () => {
                 contentInsetAdjustmentBehavior="automatic"
                 indicatorStyle="white"
             >
-                <TrackList scrollEnabled={false} tracks={filteredTracks} />
+                <TrackList scrollEnabled={false} tracks={filteredSongs} />
             </ScrollView>
         </View>
     )
