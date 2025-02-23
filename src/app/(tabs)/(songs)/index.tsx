@@ -1,9 +1,10 @@
-import library from '@/assets/data/library.json';
 import { TrackList } from "@/components/TrackList";
 import { OS } from "@/constants/device";
 import { screenPadding } from "@/constants/tokens";
 import { trackTitleFilter } from "@/helpers/filter";
+import { generateTracksListId } from "@/helpers/miscellaneuos";
 import { useNavigationSearch } from "@/hooks/useNavigationSearch";
+import { useTracks } from '@/store/library';
 import { defaultStyles } from "@/styles";
 import { useMemo } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
@@ -16,10 +17,11 @@ const SongsScreen = () => {
         }
     })
 
+    const tracks = useTracks()
     const filteredSongs = useMemo(()=>{
-        if(!search) return library
-        return library.filter(trackTitleFilter(search))
-    },[search])
+        if(!search) return tracks
+        return tracks.filter(trackTitleFilter(search))
+    },[search, tracks])
 
 
 
@@ -30,7 +32,11 @@ const SongsScreen = () => {
                 contentInsetAdjustmentBehavior="automatic"
                 indicatorStyle="white"
             >
-                <TrackList scrollEnabled={false} tracks={filteredSongs} />
+                <TrackList
+                    id={generateTracksListId('songs', search)}
+                    scrollEnabled={false} 
+                    tracks={filteredSongs} 
+                />
             </ScrollView>
         </View>
     )

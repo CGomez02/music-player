@@ -9,9 +9,11 @@ const defaultSearchOptions: SearchBarProps = {
 }
 
 export const useNavigationSearch = ({ 
-    searchBarOptions 
+    searchBarOptions,
+    title 
 } : {
-    searchBarOptions ?: SearchBarProps
+    searchBarOptions ?: SearchBarProps,
+    title ?: string
 }) => {
 
     const [ search, setSearch ] = useState<string>('');
@@ -23,7 +25,7 @@ export const useNavigationSearch = ({
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerTitle: "Songs",
+            headerTitle: title ? title : "Songs",
             headerSearchBarOptions:{
                 ...defaultSearchOptions,
                 ...searchBarOptions,
