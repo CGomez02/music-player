@@ -23,6 +23,7 @@ export const PlayPauseButton = ({
         <View style={[{height: iconSize}, style]}>
             <TouchableOpacity
                 activeOpacity={0.8}
+                style={{flex:1, width:'100%', alignItems:'center', justifyContent:'center'}}
                 onPress={()=>{                    
                     playing ? TrackPlayer.pause() : TrackPlayer.play()
                 }}
@@ -43,6 +44,7 @@ export const SkipToNextButton = ({
             onPress={()=>{
                 TrackPlayer.skipToNext()
             }}
+            style={style}
         >
             <FontAwesome6 name="forward" size={iconSize} color={colors.text}/>
         </TouchableOpacity>
@@ -59,6 +61,7 @@ export const SkipToPreviousButton = ({
             onPress={()=>{
                 TrackPlayer.skipToPrevious()
             }}
+            style={style}
         >
             <FontAwesome6 name="backward" size={iconSize} color={colors.text}/>
         </TouchableOpacity>
@@ -72,9 +75,9 @@ export const PlayerControls = ({
     return(
         <View style={[styles.container, style]}>
             <View style={styles.row}>
-                <SkipToPreviousButton iconSize={40}/>
-                <PlayPauseButton iconSize={40}/>
-                <SkipToNextButton iconSize={40}/>
+                <SkipToPreviousButton iconSize={40} style={styles.pressStyle}/>
+                <PlayPauseButton iconSize={40} style={styles.pressStyle}/>
+                <SkipToNextButton iconSize={40} style={styles.pressStyle}/>
             </View>
         </View>
     )
@@ -82,11 +85,17 @@ export const PlayerControls = ({
 
 const styles  = StyleSheet.create({
     container:{
-        width:'100%'
+        width:'100%',
     },
     row:{
         flexDirection:'row',
         justifyContent:'space-evenly',
         alignItems:'center'
+    },
+    pressStyle:{
+        width:50,
+        height:50, 
+        alignItems:'center', 
+        justifyContent:'center',
     }
 })
