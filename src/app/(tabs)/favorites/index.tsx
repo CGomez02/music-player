@@ -16,6 +16,7 @@ const FavoritesScreen = () => {
         title: 'Favorites',
         searchBarOptions:{
             placeholder: 'Find in favorites songs',
+            hideWhenScrolling:true
             
 
         }

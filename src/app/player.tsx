@@ -6,6 +6,7 @@ import PlayerVolumeBar from "@/components/PlayerVolumeBar"
 import { unknownTrackImgeUri } from "@/constants/images"
 import { colors, fontSize, screenPadding } from "@/constants/tokens"
 import { usePlayerBackground } from "@/hooks/usePlayerBackground"
+import { useTrackPlayerFavorite } from "@/hooks/useTrackPlayerFavorite"
 import { defaultStyles, utilsStyles } from "@/styles"
 import { FontAwesome } from '@expo/vector-icons'
 import { LinearGradient } from "expo-linear-gradient"
@@ -17,13 +18,11 @@ import { useActiveTrack } from "react-native-track-player"
 const PlayerScreen = () => {
 
     const activeTrack = useActiveTrack()
+    const { isFavorite, toggleFavorite } = useTrackPlayerFavorite()
     const imageColors = usePlayerBackground( activeTrack?.artwork ?? unknownTrackImgeUri)
     const { top, bottom } = useSafeAreaInsets()
-    const isFavorite = false
+   
 
-    const toggleFavorite = () => {
-
-    }
 
 
     if(!activeTrack){

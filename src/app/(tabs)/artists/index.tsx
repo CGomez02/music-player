@@ -18,7 +18,9 @@ const ArtistScreen = () => {
     const search = useNavigationSearch({
         title: 'Artists',
         searchBarOptions:{
-            placeholder: 'Search an artist'
+            placeholder: 'Search an artist',
+            hideWhenScrolling:true
+
         }
     })
     const artists = useArtists()

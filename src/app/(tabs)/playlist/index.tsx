@@ -16,7 +16,9 @@ const PlayListScreen = () => {
     const search = useNavigationSearch({
         title:'Playlist',
         searchBarOptions:{
-            placeholder:'Search in playlist'
+            placeholder:'Search in playlist',
+            hideWhenScrolling:true
+
         }
     })
 

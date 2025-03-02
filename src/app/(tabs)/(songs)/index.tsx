@@ -14,6 +14,8 @@ const SongsScreen = () => {
     const search = useNavigationSearch({
         searchBarOptions:{
             placeholder: 'Find in songs',
+            hideWhenScrolling:true
+
         }
     })
 
