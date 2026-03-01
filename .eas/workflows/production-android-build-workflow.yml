@@ -1,12 +1,14 @@
-name: Create Android Production Build
-
+name: Create Android Preview Build
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
 
-  jobs:
-    build_android:
-      type: build
-      params:
-        platform: android
+jobs:
+  build_android:
+    name: Build Android App
+    type: build
+    params:
+      platform: android
+      profile: preview
