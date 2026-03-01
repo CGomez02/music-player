@@ -15,8 +15,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.musicPlayer.crga02",
-      "infoPlist":{
-        "UIBackgroundModes":["audio"]
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
       }
     },
     "android": {
@@ -35,6 +37,15 @@
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ccc4338a-3270-4564-96be-bde71dba9a0e"
+      }
+    },
+    "owner": "cesarg"
   }
 }
